@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Justine Tesara - Terminal</title>
+    <title>Portfolio - Terminal</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -36,39 +36,65 @@
 
       const portfolio = {
         name: "Justine Tesara",
-        title: "Aspiring Developer | IT Fresh Graduate",
+        title: "Aspiring Developer | Tech Enthusiast",
         email: "justine.tesara0907@gmail.com",
         github: "https://github.com/JustineTesara",
         linkedin: "https://linkedin.com/in/JustineTesara",
         location: "Polangui, Albay, Philippines",
-        skills: [
-          { name: "JavaScript", level: 90 },
-          { name: "HTML/CSS", level: 95 },
-          { name: "Node.js/ExpressJS", level: 80 },
-          { name: "Python", level: 95 },
-          { name: "Git/GitHub", level: 80 },
-          { name: "React", level: 50 },
-          { name: "SQL/NoSQL", level: 75 },
-          { name: "RESTful APIs", level: 80 },
-        ],
+        skills: {
+          development: [
+            { name: "JavaScript", level: 90 },
+            { name: "HTML/CSS", level: 95 },
+            { name: "Node.js/ExpressJS", level: 80 },
+            { name: "Python", level: 95 },
+            { name: "Java", level: 90 },
+            { name: "Git/GitHub", level: 80 },
+            { name: "React", level: 50 },
+            { name: "SQL/NoSQL", level: 75 },
+            { name: "RESTful APIs", level: 80 },
+          ],
+          networking: [
+            { name: "TCP/IP & Networking", level: 85 },
+            { name: "DNS & DHCP", level: 80 },
+            { name: "Firewalls & Security", level: 60 },
+            { name: "Network Troubleshooting", level: 90 },
+          ],
+          techSupport: [
+            { name: "Operating Systems (Windows/Linux)", level: 90 },
+            { name: "Software Installation", level: 85 },
+            { name: "Hardware Troubleshooting", level: 85 },
+            { name: "Active Directory", level: 80 },
+            { name: "Remote Support Tools", level: 85 },
+          ],
+          aws: [
+            { name: "EC2 & VPC", level: 75 },
+            { name: "S3 & Storage", level: 80 },
+            { name: "Lambda & Serverless", level: 70 },
+            { name: "IAM & Security", level: 75 },
+            { name: "CloudWatch & Monitoring", level: 70 },
+          ],
+        },
         projects: [
           {
             name: "Backup File Organizer",
             description:
               "A powerful Python automation tool that helps you organize messy folders, create backups, and clean up your files with just a few clicks!",
             tech: "Python, Python Libraries",
+            link: "Project Link: https://github.com/JustineTesara/Backup-File-Organizer",
           },
           {
             name: "Online Book Store",
             description:
               "This is a Java Swing-based Online Book Store application with a Graphical User Interface (GUI). It allows Admins to manage books and view orders, while Users can browse, search, and buy books. The project connects to a MySQL database using JDBC.",
             tech: "Java, Swing, MySQL, JDBC",
+            link: "Project Link: https://github.com/JustineTesara/Online-Book-Store",
           },
           {
             name: "Outdoor Activity Planner",
             description:
               "A web application that helps users plan their outdoor activities by providing accurate weather predictions and forecasts.",
             tech: "Backend: Node.js with Express.js framework,Frontend: EJS (Embedded JavaScript templating), Chart.js, Styling: CSS3, Data Source: OpenWeatherMap API",
+            link: "Project Link: https://github.com/JustineTesara/Outdoor-Activities-Planner",
           },
         ],
         experience: [
@@ -209,8 +235,12 @@
               `<span class="info">Location:</span> ${portfolio.location}`
             );
             addLine(`<span class="info">Email:</span> ${portfolio.email}`);
+            const totalSkills = Object.values(portfolio.skills).reduce(
+              (sum, cat) => sum + cat.length,
+              0
+            );
             addLine(
-              `<span class="info">Skills:</span> ${portfolio.skills.length} technologies`
+              `<span class="info">Skills:</span> ${totalSkills} technologies`
             );
             addLine(
               `<span class="info">Projects:</span> ${portfolio.projects.length} completed`
@@ -244,12 +274,58 @@
                 case "skills":
                   addLine("# Technical Skills", "success");
                   addLine("");
-                  portfolio.skills.forEach((skill) => {
+                  addLine("skills/");
+                  addLine("├── development/");
+                  portfolio.skills.development.forEach((skill, i) => {
                     const filled = Math.floor(skill.level / 5);
                     const empty = 20 - filled;
                     const bar = "█".repeat(filled) + "░".repeat(empty);
+                    const isLast =
+                      i === portfolio.skills.development.length - 1;
                     addLine(
-                      `${skill.name.padEnd(15)} [${bar}] ${skill.level}%`
+                      `│   ${isLast ? "└──" : "├──"} ${skill.name.padEnd(
+                        22
+                      )} [${bar}] ${skill.level}%`
+                    );
+                  });
+                  addLine("│");
+                  addLine("├── networking/");
+                  portfolio.skills.networking.forEach((skill, i) => {
+                    const filled = Math.floor(skill.level / 5);
+                    const empty = 20 - filled;
+                    const bar = "█".repeat(filled) + "░".repeat(empty);
+                    const isLast = i === portfolio.skills.networking.length - 1;
+                    addLine(
+                      `│   ${isLast ? "└──" : "├──"} ${skill.name.padEnd(
+                        22
+                      )} [${bar}] ${skill.level}%`
+                    );
+                  });
+                  addLine("│");
+                  addLine("├── tech-support/");
+                  portfolio.skills.techSupport.forEach((skill, i) => {
+                    const filled = Math.floor(skill.level / 5);
+                    const empty = 20 - filled;
+                    const bar = "█".repeat(filled) + "░".repeat(empty);
+                    const isLast =
+                      i === portfolio.skills.techSupport.length - 1;
+                    addLine(
+                      `│   ${isLast ? "└──" : "├──"} ${skill.name.padEnd(
+                        22
+                      )} [${bar}] ${skill.level}%`
+                    );
+                  });
+                  addLine("│");
+                  addLine("└── aws/");
+                  portfolio.skills.aws.forEach((skill, i) => {
+                    const filled = Math.floor(skill.level / 5);
+                    const empty = 20 - filled;
+                    const bar = "█".repeat(filled) + "░".repeat(empty);
+                    const isLast = i === portfolio.skills.aws.length - 1;
+                    addLine(
+                      `    ${isLast ? "└──" : "├──"} ${skill.name.padEnd(
+                        22
+                      )} [${bar}] ${skill.level}%`
                     );
                   });
                   break;
@@ -262,6 +338,11 @@
                     addLine(`   ${project.description}`);
                     addLine(
                       `   <span class="warning">Tech Stack:</span> ${project.tech}`
+                    );
+                    addLine(
+                      project.link
+                        ? `   <span class="warning">${project.link}</span>`
+                        : ""
                     );
                     addLine("");
                   });
