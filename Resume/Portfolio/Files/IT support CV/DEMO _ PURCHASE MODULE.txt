@@ -1,0 +1,22 @@
+DEMO _ PURCHASE MODULE
+
+2 ways of processing the purchase document
+- Request for Quotation
+- Purchase Orders - Only Applicable if the company and vendor have already an agreement
+
+Request for Quotation
+- You can enter the name of the vendor 
+- fill out all fields with a blue highlight
+- Proceed to add products in a table, fill out the data inside the table
+- Click the save button after you have filled out the data of the products
+- We can now interpret the data of the products
+- after that, you can send the RFQ by email to request permission from the vendor
+- Then click the confirm order to proceed to the Purchase Orders (PO)
+- Once the RFQ is confirmed you can see the RFQ number will become a PO  
+
+Purchase orders
+- After you proceed to the menu for the purchase orders, you can now see the RFQ that we generated
+- There are 2 options: the first is the "Create Bill" button, and the other is the "Receive Products"
+- To choose the option it depends on the company policies. It is whether the one who receives the goods first before the payment or the other one will make payment first before receiving the goods.
+- CREATE BILL - means the company or the customer wants to pay the goods first before receiving the products.
+- RECEIVE PRODUCTS - means receive the products first before make the payment of the products.
