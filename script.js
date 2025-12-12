@@ -49,21 +49,21 @@ const portfolio = {
       description:
         "A powerful Python automation tool that helps you organize messy folders, create backups, and clean up your files with just a few clicks!",
       tech: "Python, Python Libraries",
-      link: "Project Link: https://github.com/JustineTesara/Backup-File-Organizer",
+      link: "https://github.com/JustineTesara/Backup-File-Organizer",
     },
     {
       name: "Online Book Store",
       description:
         "This is a Java Swing-based Online Book Store application with a Graphical User Interface (GUI). It allows Admins to manage books and view orders, while Users can browse, search, and buy books. The project connects to a MySQL database using JDBC.",
       tech: "Java, Swing, MySQL, JDBC",
-      link: "Project Link: https://github.com/JustineTesara/Online-Book-Store",
+      link: "https://github.com/JustineTesara/Online-Book-Store",
     },
     {
       name: "Outdoor Activity Planner",
       description:
         "A web application that helps users plan their outdoor activities by providing accurate weather predictions and forecasts.",
-      tech: "Backend: Node.js with Express.js framework,Frontend: EJS (Embedded JavaScript templating), Chart.js, Styling: CSS3, Data Source: OpenWeatherMap API",
-      link: "Project Link: https://github.com/JustineTesara/Outdoor-Activities-Planner",
+      tech: "Node.js, Express.js, EJS, Chart.js, CSS3, OpenWeatherMap API",
+      link: "https://github.com/JustineTesara/Outdoor-Activities-Planner",
     },
   ],
   experience: [
@@ -85,6 +85,167 @@ function addLine(text, className = "output") {
   output.parentElement.scrollTop = output.parentElement.scrollHeight;
 }
 
+function generateCV() {
+  // Create HTML content for better formatting
+  const htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Justine Tesara - CV</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; border-bottom: 2px solid #95a5a6; padding-bottom: 5px; }
+        .section { margin-bottom: 25px; }
+        .contact { background: #ecf0f1; padding: 15px; border-radius: 5px; }
+        .skill-category { margin: 10px 0; }
+        .project, .experience { margin: 15px 0; padding: 15px; background: #f8f9fa; border-left: 4px solid #3498db; }
+        strong { color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <h1>JUSTINE TESARA</h1>
+    <p><strong>${portfolio.title}</strong></p>
+    
+    <div class="contact">
+        <h2>Contact Information</h2>
+        <p>📧 Email: ${portfolio.email}</p>
+        <p>📍 Location: ${portfolio.location}</p>
+        <p>💼 LinkedIn: ${portfolio.linkedin}</p>
+        <p>🔗 GitHub: ${portfolio.github}</p>
+        <p>📞 Phone: +63 9519346722</p>
+    </div>
+
+    <div class="section">
+        <h2>Education</h2>
+        <p><strong>BICOL UNIVERSITY POLANGUI</strong></p>
+        <p>Bachelor of Science in Information Technology</p>
+        <p>Cum Laude | GWA 1.59 (2021-2025)</p>
+    </div>
+
+    <div class="section">
+        <h2>About Me</h2>
+        <p>Highly motivated IT graduate (Cum Laude) with a strong interest in web development. Experienced in building and maintaining websites and eager to apply problem-solving skills and basic development knowledge in an entry-level web developer role.</p>
+    </div>
+
+    <div class="section">
+        <h2>Technical Skills</h2>
+        
+        <div class="skill-category">
+            <strong>Development:</strong>
+            ${portfolio.skills.development
+              .map((s) => `${s.name} (${s.level}%)`)
+              .join(", ")}
+        </div>
+        
+        <div class="skill-category">
+            <strong>Networking:</strong>
+            ${portfolio.skills.networking
+              .map((s) => `${s.name} (${s.level}%)`)
+              .join(", ")}
+        </div>
+        
+        <div class="skill-category">
+            <strong>Tech Support:</strong>
+            ${portfolio.skills.techSupport
+              .map((s) => `${s.name} (${s.level}%)`)
+              .join(", ")}
+        </div>
+        
+        <div class="skill-category">
+            <strong>AWS:</strong>
+            ${portfolio.skills.aws
+              .map((s) => `${s.name} (${s.level}%)`)
+              .join(", ")}
+        </div>
+
+        <div class="skill-category">
+            <strong>Front-End:</strong> HTML, CSS, JavaScript, Bootstrap, Tailwind
+        </div>
+
+        <div class="skill-category">
+            <strong>Back-End:</strong> PHP, Node.js/Express.js, MySQL, Python (Flask)
+        </div>
+
+        <div class="skill-category">
+            <strong>Tools:</strong> Git, GitHub, VSCode, Postman
+        </div>
+
+        <div class="skill-category">
+            <strong>AI Tools:</strong> Claude, ChatGPT, Gemini, GROK
+        </div>
+
+        <div class="skill-category">
+            <strong>Soft Skills:</strong> Eager to learn, Adaptability, Teamwork, Problem Solving, Communication
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Projects</h2>
+        ${portfolio.projects
+          .map(
+            (project) => `
+            <div class="project">
+                <h3>${project.name}</h3>
+                <p>${project.description}</p>
+                <p><strong>Tech Stack:</strong> ${project.tech}</p>
+                <p><strong>Link:</strong> <a href="${project.link}" target="_blank">${project.link}</a></p>
+            </div>
+        `
+          )
+          .join("")}
+        
+        <div class="project">
+            <h3>Portfolio Website</h3>
+            <p>Live Site: <a href="https://tesarajustine.netlify.app/" target="_blank">https://tesarajustine.netlify.app/</a></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Work Experience</h2>
+        ${portfolio.experience
+          .map(
+            (exp) => `
+            <div class="experience">
+                <h3>${exp.role}</h3>
+                <p><strong>${exp.company}</strong> | ${exp.period}</p>
+                <p>${exp.description}</p>
+            </div>
+        `
+          )
+          .join("")}
+    </div>
+
+    <div class="section">
+        <h2>Achievements & Certifications</h2>
+        <ul>
+            <li>Certificate of Recognition in Sutherland</li>
+            <li>Python Basic (HackerRank)</li>
+            <li>Python Essentials 1 (Cisco Networking Academy)</li>
+            <li>Certification of Completion in JAVA NCIII (TESDA)</li>
+            <li>AWS Cloud Quest: Cloud Practitioner (Certificate of Completion)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Languages</h2>
+        <p>English, Filipino</p>
+    </div>
+</body>
+</html>
+  `;
+
+  // Create blob and download as HTML (can be opened in browser and saved as PDF)
+  const blob = new Blob([htmlContent], { type: "text/html" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "Justine_Tesara_CV.html";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 function showWelcome() {
   addLine(
     '<pre class="ascii-art">' +
@@ -104,6 +265,49 @@ function showWelcome() {
     "output"
   );
   addLine("");
+}
+
+function showStats() {
+  const totalSkills = Object.values(portfolio.skills).reduce(
+    (sum, cat) => sum + cat.length,
+    0
+  );
+  const avgSkillLevel = Math.round(
+    Object.values(portfolio.skills)
+      .flat()
+      .reduce((sum, skill) => sum + skill.level, 0) / totalSkills
+  );
+
+  addLine('<div class="stats-box">', "output");
+  addLine('📊 <span class="success">PORTFOLIO STATISTICS</span>', "info");
+  addLine("");
+  addLine(`Total Skills: ${totalSkills} technologies`);
+  addLine(`Average Proficiency: ${avgSkillLevel}%`);
+  addLine(`Completed Projects: ${portfolio.projects.length}`);
+  addLine(`Work Experience: ${portfolio.experience.length} position(s)`);
+  addLine("");
+
+  // Top skills
+  const allSkills = Object.values(portfolio.skills).flat();
+  const topSkills = allSkills.sort((a, b) => b.level - a.level).slice(0, 5);
+  addLine('🏆 <span class="warning">Top 5 Skills:</span>');
+  topSkills.forEach((skill, i) => {
+    addLine(`   ${i + 1}. ${skill.name} - ${skill.level}%`);
+  });
+  addLine("</div>");
+}
+
+function showTimeline() {
+  addLine('📅 <span class="success">CAREER TIMELINE</span>', "info");
+  addLine("");
+
+  portfolio.experience.forEach((exp) => {
+    addLine('<div class="timeline-item">', "output");
+    addLine(`<span class="warning">${exp.period}</span>`, "info");
+    addLine(`<span class="success">${exp.role}</span> at ${exp.company}`);
+    addLine(`${exp.description}`);
+    addLine("</div>");
+  });
 }
 
 function executeCommand(cmd) {
@@ -129,13 +333,22 @@ function executeCommand(cmd) {
         '  <span class="success">ls</span>           - List available sections'
       );
       addLine(
-        '  <span class="success">cat</span>          - Display file contents (cat about/skills/projects/experience/contact)'
+        '  <span class="success">cat</span>          - Display file contents (about/skills/projects/experience/contact)'
       );
       addLine(
         '  <span class="success">whoami</span>       - Display information about me'
       );
       addLine(
         '  <span class="success">neofetch</span>     - Show system information'
+      );
+      addLine(
+        '  <span class="success">stats</span>        - Display portfolio statistics'
+      );
+      addLine(
+        '  <span class="success">timeline</span>     - Show career timeline'
+      );
+      addLine(
+        '  <span class="success">download</span>     - Download CV/Resume'
       );
       addLine(
         '  <span class="success">history</span>      - Show command history'
@@ -153,23 +366,28 @@ function executeCommand(cmd) {
 
     case "ls":
     case "ll":
-      addLine("total 6", "info");
+      addLine("total 7", "info");
       addLine(
-        'drwxr-xr-x 2 guest guest 4096 Dec 11 12:00 <span class="info">about</span>'
+        '-rw-r--r-- 1 guest guest  512 Dec 13 12:00 <span class="warning">README.md</span>'
       );
       addLine(
-        'drwxr-xr-x 2 guest guest 4096 Dec 11 12:00 <span class="info">skills</span>'
+        'drwxr-xr-x 2 guest guest 4096 Dec 13 12:00 <span class="info">about</span>'
       );
       addLine(
-        'drwxr-xr-x 2 guest guest 4096 Dec 11 12:00 <span class="info">projects</span>'
+        'drwxr-xr-x 2 guest guest 4096 Dec 13 12:00 <span class="info">skills</span>'
       );
       addLine(
-        'drwxr-xr-x 2 guest guest 4096 Dec 11 12:00 <span class="info">experience</span>'
+        'drwxr-xr-x 2 guest guest 4096 Dec 13 12:00 <span class="info">projects</span>'
       );
       addLine(
-        'drwxr-xr-x 2 guest guest 4096 Dec 11 12:00 <span class="info">contact</span>'
+        'drwxr-xr-x 2 guest guest 4096 Dec 13 12:00 <span class="info">experience</span>'
       );
-      addLine("-rw-r--r-- 1 guest guest  256 Dec 11 12:00 README.md");
+      addLine(
+        'drwxr-xr-x 2 guest guest 4096 Dec 13 12:00 <span class="info">contact</span>'
+      );
+      addLine(
+        '-rwxr-xr-x 1 guest guest 2048 Dec 13 12:00 <span class="success">download_cv.sh</span>'
+      );
       break;
 
     case "whoami":
@@ -212,6 +430,33 @@ function executeCommand(cmd) {
       );
       break;
 
+    case "stats":
+    case "statistics":
+      showStats();
+      break;
+
+    case "timeline":
+      showTimeline();
+      break;
+
+    case "download":
+    case "cv":
+    case "resume":
+      addLine('📄 <span class="success">Download CV/Resume</span>', "info");
+      addLine("");
+      addLine("Click the button below to download:");
+      addLine(
+        '<a href="#" class="download-btn" onclick="generateCV(); return false;">⬇️ Download CV (HTML)</a>'
+      );
+      addLine("");
+      addLine(
+        '<span class="info">💡 Tip: After download, open the HTML file and use "Print to PDF" in your browser to save as PDF!</span>'
+      );
+      setTimeout(() => {
+        addLine("✅ Download ready! Check your downloads folder.", "success");
+      }, 1000);
+      break;
+
     case "cat":
       if (args.length < 2) {
         addLine("cat: missing file operand", "error");
@@ -219,8 +464,32 @@ function executeCommand(cmd) {
       } else {
         const file = args[1].toLowerCase();
         switch (file) {
-          case "about":
+          case "readme":
           case "readme.md":
+            addLine("# 📁 Portfolio Terminal", "success");
+            addLine("");
+            addLine("Welcome to my interactive terminal portfolio!");
+            addLine("");
+            addLine("## 🚀 Quick Start", "info");
+            addLine("");
+            addLine("Try these commands:");
+            addLine(
+              '  • <span class="help-command" onclick="executeCommand(\'cat about\')">cat about</span>      - Learn about me'
+            );
+            addLine(
+              '  • <span class="help-command" onclick="executeCommand(\'cat skills\')">cat skills</span>    - View technical skills'
+            );
+            addLine(
+              '  • <span class="help-command" onclick="executeCommand(\'stats\')">stats</span>         - Portfolio statistics'
+            );
+            addLine(
+              '  • <span class="help-command" onclick="executeCommand(\'download\')">download</span>      - Download my CV'
+            );
+            addLine("");
+            addLine("Enjoy exploring! 🎉");
+            break;
+
+          case "about":
             addLine("# About Me", "success");
             addLine("");
             addLine(`Name: ${portfolio.name}`);
@@ -233,7 +502,7 @@ function executeCommand(cmd) {
             addLine(
               "I am aspiring to build a career in software development, focusing on modern web"
             );
-            addLine(" technologies and best practices.");
+            addLine("technologies and best practices.");
             break;
 
           case "skills":
@@ -248,7 +517,7 @@ function executeCommand(cmd) {
               const isLast = i === portfolio.skills.development.length - 1;
               addLine(
                 `│   ${isLast ? "└──" : "├──"} ${skill.name.padEnd(
-                  22
+                  30
                 )} [${bar}] ${skill.level}%`
               );
             });
@@ -261,7 +530,7 @@ function executeCommand(cmd) {
               const isLast = i === portfolio.skills.networking.length - 1;
               addLine(
                 `│   ${isLast ? "└──" : "├──"} ${skill.name.padEnd(
-                  22
+                  30
                 )} [${bar}] ${skill.level}%`
               );
             });
@@ -274,7 +543,7 @@ function executeCommand(cmd) {
               const isLast = i === portfolio.skills.techSupport.length - 1;
               addLine(
                 `│   ${isLast ? "└──" : "├──"} ${skill.name.padEnd(
-                  22
+                  30
                 )} [${bar}] ${skill.level}%`
               );
             });
@@ -287,7 +556,7 @@ function executeCommand(cmd) {
               const isLast = i === portfolio.skills.aws.length - 1;
               addLine(
                 `    ${isLast ? "└──" : "├──"} ${skill.name.padEnd(
-                  22
+                  30
                 )} [${bar}] ${skill.level}%`
               );
             });
@@ -303,9 +572,7 @@ function executeCommand(cmd) {
                 `   <span class="warning">Tech Stack:</span> ${project.tech}`
               );
               addLine(
-                project.link
-                  ? `   <span class="warning">${project.link}</span>`
-                  : ""
+                `   <span class="warning">Link:</span> <a href="${project.link}" target="_blank">${project.link}</a>`
               );
               addLine("");
             });
@@ -335,6 +602,10 @@ function executeCommand(cmd) {
             addLine(
               `LinkedIn: <a href="${portfolio.linkedin}" target="_blank">${portfolio.linkedin}</a>`
             );
+            addLine("");
+            addLine(
+              '💼 <span class="info">Ready to collaborate? Download my CV with</span> <span class="help-command" onclick="executeCommand(\'download\')">download</span>'
+            );
             break;
 
           default:
@@ -361,6 +632,10 @@ function executeCommand(cmd) {
       addLine("Logging out...", "info");
       setTimeout(() => {
         addLine("Thank you for visiting! Goodbye! 👋", "success");
+        addLine(
+          'Don\'t forget to <span class="help-command" onclick="executeCommand(\'download\')">download my CV</span>! 📄',
+          "info"
+        );
       }, 500);
       break;
 
