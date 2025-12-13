@@ -5,7 +5,8 @@ let historyIndex = -1;
 
 const portfolio = {
   name: "Justine Tesara",
-  title: "Aspiring Developer | Tech Enthusiast",
+  title:
+    "Aspiring IT Support / Junior IT Professional Interested in Cybersecurity and Software Development",
   email: "justine.tesara0907@gmail.com",
   github: "https://github.com/JustineTesara",
   linkedin: "https://www.linkedin.com/in/justine-tesara-a59674318/",
@@ -34,13 +35,6 @@ const portfolio = {
       { name: "Hardware Troubleshooting", level: 85 },
       { name: "Active Directory", level: 80 },
       { name: "Remote Support Tools", level: 85 },
-    ],
-    aws: [
-      { name: "EC2 & VPC", level: 75 },
-      { name: "S3 & Storage", level: 80 },
-      { name: "Lambda & Serverless", level: 70 },
-      { name: "IAM & Security", level: 75 },
-      { name: "CloudWatch & Monitoring", level: 70 },
     ],
   },
   projects: [
@@ -126,7 +120,10 @@ function generateCV() {
 
     <div class="section">
         <h2>About Me</h2>
-        <p>Highly motivated IT graduate (Cum Laude) with a strong interest in web development. Experienced in building and maintaining websites and eager to apply problem-solving skills and basic development knowledge in an entry-level web developer role.</p>
+        <p>I am an aspiring IT professional.
+          I am interested in Cybersecurity and Software Development.
+          Currently building skills in Linux, networking, and web projects.
+        </p>
     </div>
 
     <div class="section">
@@ -152,16 +149,9 @@ function generateCV() {
               .map((s) => `${s.name} (${s.level}%)`)
               .join(", ")}
         </div>
-        
-        <div class="skill-category">
-            <strong>AWS:</strong>
-            ${portfolio.skills.aws
-              .map((s) => `${s.name} (${s.level}%)`)
-              .join(", ")}
-        </div>
 
         <div class="skill-category">
-            <strong>Front-End:</strong> HTML, CSS, JavaScript, Bootstrap, Tailwind
+            <strong>Front-End:</strong> HTML, CSS, JavaScript, Bootstrap, React.js (still learning)
         </div>
 
         <div class="skill-category">
@@ -496,13 +486,13 @@ function executeCommand(cmd) {
             addLine(`Title: ${portfolio.title}`);
             addLine(`Location: ${portfolio.location}`);
             addLine("");
+            addLine("I am an aspiring IT professional.");
             addLine(
-              "I am a passionate developer who loves creating amazing web experiences."
+              "I am interested in Cybersecurity and Software Development."
             );
             addLine(
-              "I am aspiring to build a career in software development, focusing on modern web"
+              "Currently building skills in Linux, networking, and web projects."
             );
-            addLine("technologies and best practices.");
             break;
 
           case "skills":
@@ -547,19 +537,7 @@ function executeCommand(cmd) {
                 )} [${bar}] ${skill.level}%`
               );
             });
-            addLine("│");
-            addLine("└── aws/");
-            portfolio.skills.aws.forEach((skill, i) => {
-              const filled = Math.floor(skill.level / 5);
-              const empty = 20 - filled;
-              const bar = "█".repeat(filled) + "░".repeat(empty);
-              const isLast = i === portfolio.skills.aws.length - 1;
-              addLine(
-                `    ${isLast ? "└──" : "├──"} ${skill.name.padEnd(
-                  30
-                )} [${bar}] ${skill.level}%`
-              );
-            });
+
             break;
 
           case "projects":
